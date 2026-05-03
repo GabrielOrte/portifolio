@@ -48,6 +48,7 @@ body {
   color: var(--color-white);
   overflow-x: hidden;
   line-height: 1.6;
+
 }
 
 img {
@@ -171,8 +172,17 @@ main {
 }
 
 @keyframes piscar {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75%      { opacity: 0; }
+
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0;
+  }
 }
 
 /* Bio card */
@@ -201,10 +211,10 @@ main {
 }
 
 .bio-img img {
-  width: clamp(80px, 12vw, 160px);
-  height: clamp(80px, 12vw, 160px);
+  width: clamp(90px, 12vw, 180px);
+  height: clamp(90px, 12vw, 170px);
   border-radius: var(--radius-full);
-  object-fit: cover;
+  background-position: top;
 }
 
 .bio-profile-texto {
@@ -331,15 +341,14 @@ main {
   width: 100%;
   background-color: var(--color-bg);
   border-top: 1px solid var(--color-border);
-  padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 3vw, 3rem);
-  padding-bottom: clamp(3rem, 6vw, 6rem);
+  padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem);
 }
 
 .tech-info h3 {
   font-size: clamp(2rem, 4vw, 3.5rem);
   color: var(--color-white);
   text-align: center;
-  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .tech-info h3 span {
@@ -347,68 +356,83 @@ main {
 }
 
 .card-container-tech {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1rem, 2vw, 1.5rem);
-}
-
-.card-sup-container-tech,
-.card-inf-container-tech {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
 }
 
-.card-tech {
-  background-color: var(--color-card);
-  border-radius: var(--radius-sm);
+.tech-group {
+  background: #141417;
+  border: 1px solid var(--color-border);
+  border-radius: 15px;
+  padding: clamp(1rem, 2vw, 1.75rem);
+}
+
+.tech-group-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+  margin-bottom: 1rem;
+}
+
+.tech-chips {
   display: flex;
-  flex-direction: column;
-  box-shadow:
-    10px 10px 20px rgba(0, 0, 0, 0.8),
-    -5px -5px 15px rgba(255, 255, 255, 0.05),
-    inset 2px 2px 5px rgba(255, 255, 255, 0.05),
-    inset -2px -2px 5px rgba(0, 0, 0, 0.8);
-  transition: transform var(--transition), box-shadow var(--transition);
-  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.card-tech:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    14px 14px 25px rgba(0, 0, 0, 0.9),
-    -6px -6px 15px rgba(255, 255, 255, 0.06);
-  cursor: pointer;
-}
-
-.card-tech-img {
+.tech-chip {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 1.75rem 1rem 1rem;
+  gap: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 7px 14px 7px 8px;
+  cursor: default;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
 }
 
-.card-tech-img img {
-  width: clamp(80px, 10vw, 150px);
-  height: clamp(80px, 10vw, 150px);
+.tech-chip:hover {
+  border-color: var(--color-white);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-2px);
+}
+
+.tech-chip img {
+  width: 28px;
+  height: 28px;
   object-fit: contain;
 }
 
-.card-tech-bio {
-  flex: 1;
-  padding: 1rem 1.5rem 1.5rem;
-}
-
-.card-tech-bio p {
-  font-size: clamp(0.8rem, 1vw, 0.95rem);
+.tech-chip-name {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--color-white);
-  line-height: 1.7;
-  text-align: justify;
+  line-height: 1;
 }
 
-/* ============================================================
+.tech-chip-desc {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-gray);
+  line-height: 1;
+  margin-top: 3px;
+}
+
+@media (max-width: 700px) {
+  .card-container-tech {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================================================
    PROJETOS
    ============================================================ */
+
 .projetos-container {
   width: 100%;
   background-color: var(--color-bg);
@@ -495,36 +519,137 @@ main {
   line-height: 1.6;
 }
 
-.card-projeto a{
+.card-projeto a {
   text-decoration: none;
+}
+
+/* ============================================================
+   FORMAÇÃO ACADÊMICA
+   ============================================================ */
+.formacao-academica {
+  width: 100%;
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem);
+}
+
+.formacao-academica h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--color-white);
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+}
+
+.formacao-academica h2 span {
+  color: var(--color-gray);
+}
+
+.container-formacao {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.formacao-card {
+  background: #141417;
+  border: 1px solid var(--color-border);
+  border-radius: 15px;
+  padding: clamp(1.25rem, 2vw, 2rem);
+  width: min(520px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.formacao-card:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+.formacao-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.formacao-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-active);
+  border: 1px solid var(--color-active);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+
+.formacao-periodo {
+  font-size: 0.75rem;
+  color: var(--color-gray);
+  font-style: normal;
+}
+
+.formacao-instituicao {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.3;
+}
+
+.formacao-curso {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.formacao-desc {
+  font-size: clamp(0.82rem, 1vw, 0.92rem);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 600px) {
+  .formacao-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* ============================================================
    FOOTER / CONTATO
    ============================================================ */
 footer {
+  
   width: 100%;
   background-color: var(--color-card);
   border-top: 1px solid var(--color-border);
   padding-top: clamp(2rem, 4vw, 3.5rem);
 }
 
-footer > h3 {
+footer>h3 {
   font-size: clamp(2rem, 4vw, 3.5rem);
   text-align: center;
   color: var(--color-white);
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-footer > h3 span {
+footer>h3 span {
   color: var(--color-gray);
 }
 
 .footer-container-contato {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  padding: 0 clamp(1.5rem, 5vw, 5rem) clamp(2rem, 4vw, 3rem);
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+padding-bottom: 3rem;
 }
 
 .footer-content h4,
@@ -565,6 +690,7 @@ footer > h3 span {
 .social-midia-contato {
   display: flex;
   flex-direction: column;
+  ;
 }
 
 .social-links {
@@ -629,17 +755,14 @@ footer > h3 span {
     flex-direction: column;
     align-items: center;
     border-bottom: none;
-  }
 
-  .bio-img {
-    border-right: none;
-    border-bottom: 2px solid black;
-    width: 100%;
   }
 
   .bio-profile-texto {
     align-items: center;
     text-align: center;
+    display: flex;
+    flex-direction: column;
   }
 
   .card-sup-container-tech,
@@ -802,6 +925,7 @@ footer > h3 span {
 
 /* --- Notebook pequeno: 901px a 1200px --- */
 @media (min-width: 901px) and (max-width: 1200px) {
+
   .card-sup-container-tech,
   .card-inf-container-tech {
     grid-template-columns: repeat(2, 1fr);
@@ -830,6 +954,7 @@ footer > h3 span {
 
 /* --- Desktop e monitores: acima de 1400px --- */
 @media (min-width: 1401px) {
+
   .card-sup-container-tech,
   .card-inf-container-tech {
     grid-template-columns: repeat(4, 1fr);
@@ -865,6 +990,7 @@ footer > h3 span {
 
 /* Usuários que preferem menos movimento */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
