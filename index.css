@@ -360,6 +360,7 @@ main {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   width: 100%;
+
 }
 
 .tech-group {
@@ -367,21 +368,23 @@ main {
   border: 1px solid var(--color-border);
   border-radius: 15px;
   padding: clamp(1rem, 2vw, 1.75rem);
+
 }
 
 .tech-group-title {
-  font-size: 0.7rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-gray);
   margin-bottom: 1rem;
+  
 }
 
 .tech-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 20px;
 }
 
 .tech-chip {
@@ -390,7 +393,7 @@ main {
   gap: 8px;
   border: 1px solid var(--color-border);
   border-radius: 20px;
-  padding: 7px 14px 7px 8px;
+  padding: 24px 14px 24px 14px;
   cursor: default;
   transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
 }
@@ -409,7 +412,7 @@ main {
 
 .tech-chip-name {
   display: block;
-  font-size: 0.85rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-white);
   line-height: 1;
@@ -468,7 +471,7 @@ main {
 
 .card-projeto:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+
 }
 
 .card-image {
@@ -531,12 +534,13 @@ main {
   background-color: var(--color-bg);
   border-top: 1px solid var(--color-border);
   padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem);
+
 }
 
 .formacao-academica h2 {
   font-size: clamp(2rem, 4vw, 3.5rem);
   color: var(--color-white);
-  text-align: center;
+  text-align: center  ;
   margin-bottom: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
 }
@@ -548,7 +552,7 @@ main {
 .container-formacao {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 1.25rem;
 }
 
@@ -562,12 +566,10 @@ main {
   flex-direction: column;
   gap: 0.6rem;
   transition: border-color 0.2s ease, transform 0.2s ease;
+    cursor: default;
 }
 
-.formacao-card:hover {
-  border-color: rgba(255, 255, 255, 0.35);
-  transform: translateY(-3px);
-}
+
 
 .formacao-card-header {
   display: flex;
@@ -631,7 +633,7 @@ footer {
   width: 100%;
   background-color: var(--color-card);
   border-top: 1px solid var(--color-border);
-  padding-top: clamp(2rem, 4vw, 3.5rem);
+  padding-top: clamp(3rem, 3vw, 3.5rem);
 }
 
 footer>h3 {
